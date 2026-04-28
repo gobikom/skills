@@ -20,6 +20,17 @@ All packs generate adapters for 5 AI coding tools from a single source:
 | Gemini CLI | `.toml` (description + prompt) | `.gemini/skills/` |
 | Antigravity | `.md` (description frontmatter) | `.antigravity/commands/` |
 
+## Installation Guides
+
+| Platform | Guide |
+|----------|-------|
+| Claude Code (CLI / Desktop / IDE) | [docs/install-claude-code.md](docs/install-claude-code.md) |
+| Claude Web — Skills (upload ZIP) | [docs/install-claude-web-skills.md](docs/install-claude-web-skills.md) |
+| Claude Web — Project Instructions (copy-paste) | [docs/install-web-instructions.md](docs/install-web-instructions.md) |
+| Codex CLI | `./design/install.sh <project> codex` |
+| Gemini CLI | `./design/install.sh <project> gemini` |
+| Antigravity | `./design/install.sh <project> antigravity` |
+
 ## Quick Start
 
 ```bash

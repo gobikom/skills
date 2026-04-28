@@ -27,6 +27,15 @@
 
 ---
 
+## Installation Guides
+
+| วิธี | คำอธิบาย | Guide |
+|------|----------|-------|
+| **Claude Code** (CLI/Desktop/IDE) | Features เต็ม — slash commands, auto-trigger, tool approve | [install-claude-code.md](../docs/install-claude-code.md) |
+| **Claude Web Skills** (upload ZIP) | ใช้ได้ทุก conversation บน claude.ai | [install-claude-web-skills.md](../docs/install-claude-web-skills.md) |
+| **Claude Web Instructions** (copy-paste) | ง่ายสุด — วาง text ใน Project Instructions | [install-web-instructions.md](../docs/install-web-instructions.md) |
+| **Codex / Gemini / Antigravity** | ผ่าน install.sh | ดูด้านล่าง |
+
 ## Quick Start
 
 ### Install to a project (all platforms at once)
