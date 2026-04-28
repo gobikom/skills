@@ -1,6 +1,6 @@
 ---
 name: research-synthesis
-description: Synthesize user research into themes, insights, and recommendations. Use when analyzing interview transcripts, survey results, usability tests, or any user feedback data.
+description: "Synthesize user research into themes, insights, and recommendations. Use when analyzing interview transcripts, survey results, usability tests, or any user feedback data."
 argument-hint: "<research data, transcripts, or survey results>"
 allowed-tools:
   - Read

@@ -40,18 +40,21 @@ def parse_prompt(path: Path) -> tuple[dict, str]:
     return fm, body
 
 
-def replace_args_placeholder(body: str, target_placeholder: str) -> str:
-    """Replace $ARGUMENTS with the target platform's placeholder."""
-    if target_placeholder == "$ARGUMENTS":
-        return body
-    return body.replace("$ARGUMENTS", target_placeholder)
+def replace_args_placeholder(body: str, target_placeholder: str, platform: str) -> str:
+    """Replace $ARGUMENTS and Claude-specific @$N with platform equivalents."""
+    if target_placeholder != "$ARGUMENTS":
+        body = body.replace("$ARGUMENTS", target_placeholder)
+    if platform not in ("claude-code", "claude-skills"):
+        body = re.sub(r"@\$\d+", "", body)
+        body = re.sub(r"\n{3,}", "\n\n", body)
+    return body
 
 
 def generate_claude_code(fm: dict, body: str, config: dict, skill_name: str) -> str:
     """Generate Claude Code SKILL.md with full frontmatter (allowed-tools, paths)."""
     lines = ["---"]
     lines.append(f"name: {fm['name']}")
-    lines.append(f"description: {fm['description']}")
+    lines.append(f'description: "{fm["description"]}"')
     lines.append(f'argument-hint: "{fm["argument-hint"]}"')
 
     allowed_tools = config.get("allowed_tools", {}).get(skill_name, [])
@@ -76,7 +79,7 @@ def generate_claude_skills(fm: dict, body: str, config: dict, skill_name: str) -
     """Generate Claude Skills SKILL.md (no allowed-tools, has paths)."""
     lines = ["---"]
     lines.append(f"name: {fm['name']}")
-    lines.append(f"description: {fm['description']}")
+    lines.append(f'description: "{fm["description"]}"')
     lines.append(f'argument-hint: "{fm["argument-hint"]}"')
 
     paths = fm.get("paths", [])
@@ -145,6 +148,9 @@ def main():
     args = [a for a in args if a != "--clean"]
 
     config = load_config()
+    if not config or "adapters" not in config:
+        print("ERROR: adapters.yml missing or has no 'adapters' key", file=sys.stderr)
+        sys.exit(1)
     adapters_config = config["adapters"]
     skills_config = config.get("skills", {})
 
@@ -172,10 +178,21 @@ def main():
         generator = GENERATORS[platform]
 
         for prompt_path in prompts:
-            fm, body = parse_prompt(prompt_path)
+            try:
+                fm, body = parse_prompt(prompt_path)
+            except (ValueError, yaml.YAMLError) as e:
+                print(f"ERROR: {e}", file=sys.stderr)
+                sys.exit(1)
+
+            required_keys = ["name", "description", "argument-hint"]
+            for key in required_keys:
+                if key not in fm:
+                    print(f"ERROR: Missing required key '{key}' in {prompt_path}", file=sys.stderr)
+                    sys.exit(1)
+
             skill_name = fm["name"]
 
-            body = replace_args_placeholder(body, args_placeholder)
+            body = replace_args_placeholder(body, args_placeholder, platform)
 
             gen_config = dict(pconfig)
             gen_config["_skills"] = skills_config

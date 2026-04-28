@@ -1,6 +1,6 @@
 ---
 name: accessibility-review
-description: Run a WCAG 2.1 AA accessibility audit on a design or page. Use when checking color contrast, screen reader support, keyboard navigation, or any accessibility compliance question.
+description: "Run a WCAG 2.1 AA accessibility audit on a design or page. Use when checking color contrast, screen reader support, keyboard navigation, or any accessibility compliance question."
 argument-hint: "<Figma URL, URL, or description>"
 allowed-tools:
   - mcp__claude_ai_Figma__get_design_context

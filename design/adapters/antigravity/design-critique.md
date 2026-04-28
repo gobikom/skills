@@ -16,7 +16,7 @@ Activate when the user says "critique", "review this design", "give me feedback"
 /design-critique $ARGUMENTS
 ```
 
-Review the design: @$1
+Review the design: 
 
 If a Figma URL is provided, pull the design using Figma MCP. If a file is referenced, read it. Otherwise, ask the user to describe or share their design.
 

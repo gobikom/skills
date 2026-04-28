@@ -16,7 +16,7 @@ Activate when the user says "ux copy", "write copy for", "error message", "empty
 /ux-writing $ARGUMENTS
 ```
 
-Write or review UX copy for: @$1
+Write or review UX copy for: 
 
 ## What to Ask (if missing)
 

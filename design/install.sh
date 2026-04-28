@@ -30,9 +30,10 @@ TARGET="$(cd "$1" && pwd)"
 shift
 
 # Default: install all platforms
-PLATFORMS=("${@:-claude-code codex gemini antigravity}")
-if [ ${#PLATFORMS[@]} -eq 0 ] || [ "${PLATFORMS[0]}" = "claude-code codex gemini antigravity" ]; then
-    PLATFORMS=(claude-code codex gemini antigravity)
+if [ $# -eq 0 ]; then
+    PLATFORMS=(claude-code claude-skills codex gemini antigravity)
+else
+    PLATFORMS=("$@")
 fi
 
 install_platform() {

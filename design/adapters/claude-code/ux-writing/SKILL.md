@@ -1,6 +1,6 @@
 ---
 name: ux-writing
-description: Write or review UX copy — microcopy, error messages, empty states, CTAs, onboarding flows. Use when writing interface text, button labels, or any user-facing copy.
+description: "Write or review UX copy — microcopy, error messages, empty states, CTAs, onboarding flows. Use when writing interface text, button labels, or any user-facing copy."
 argument-hint: "<context, copy to review, or component name>"
 allowed-tools:
   - mcp__claude_ai_Figma__get_design_context

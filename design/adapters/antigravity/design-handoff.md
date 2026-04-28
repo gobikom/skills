@@ -16,7 +16,7 @@ Activate when the user says "handoff", "dev handoff", "developer specs", "implem
 /design-handoff $ARGUMENTS
 ```
 
-Generate handoff specs for: @$1
+Generate handoff specs for: 
 
 If a Figma URL is provided, pull the design using Figma MCP. Otherwise, work from the provided description or screenshot.
 

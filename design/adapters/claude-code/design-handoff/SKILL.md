@@ -1,6 +1,6 @@
 ---
 name: design-handoff
-description: Generate developer handoff specs from a design — measurements, tokens, states, interactions, responsive behavior, and edge cases. Use when preparing designs for engineering implementation.
+description: "Generate developer handoff specs from a design — measurements, tokens, states, interactions, responsive behavior, and edge cases. Use when preparing designs for engineering implementation."
 argument-hint: "<Figma URL or design description>"
 allowed-tools:
   - mcp__claude_ai_Figma__get_design_context

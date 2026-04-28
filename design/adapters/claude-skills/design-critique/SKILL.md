@@ -1,6 +1,6 @@
 ---
 name: design-critique
-description: Get structured design feedback on usability, visual hierarchy, accessibility, and consistency. Use when sharing a Figma URL, screenshot, or describing a design for review.
+description: "Get structured design feedback on usability, visual hierarchy, accessibility, and consistency. Use when sharing a Figma URL, screenshot, or describing a design for review."
 argument-hint: "<Figma URL, screenshot, or description>"
 paths:
   - "**/*.css"

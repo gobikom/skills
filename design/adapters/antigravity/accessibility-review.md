@@ -16,7 +16,7 @@ Activate when the user says "accessibility", "WCAG audit", "is this accessible",
 /accessibility-review $ARGUMENTS
 ```
 
-Audit for accessibility: @$1
+Audit for accessibility: 
 
 If a Figma URL is provided, pull the design using Figma MCP. If a local file or URL is given, analyze it directly.
 

@@ -1,6 +1,6 @@
 ---
 name: design-handoff
-description: Generate developer handoff specs from a design — measurements, tokens, states, interactions, responsive behavior, and edge cases. Use when preparing designs for engineering implementation.
+description: "Generate developer handoff specs from a design — measurements, tokens, states, interactions, responsive behavior, and edge cases. Use when preparing designs for engineering implementation."
 argument-hint: "<Figma URL or design description>"
 paths:
   - "**/design/**"

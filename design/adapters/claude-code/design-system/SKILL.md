@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: Audit, document, or extend your design system — components, tokens, and patterns. Use when reviewing component libraries, creating design tokens, or maintaining design consistency.
+description: "Audit, document, or extend your design system — components, tokens, and patterns. Use when reviewing component libraries, creating design tokens, or maintaining design consistency."
 argument-hint: "[audit | document | extend] <component or system>"
 allowed-tools:
   - mcp__claude_ai_Figma__get_design_context

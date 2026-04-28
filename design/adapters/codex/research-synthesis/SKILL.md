@@ -19,7 +19,7 @@ Activate when the user says "research synthesis", "synthesize research", "analyz
 /research-synthesis $ARGUMENTS
 ```
 
-Synthesize research from: @$1
+Synthesize research from: 
 
 If a file path or directory is provided, read and analyze the data. If data is pasted directly, work from that.
 
