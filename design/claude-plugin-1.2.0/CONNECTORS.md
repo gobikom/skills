@@ -14,5 +14,6 @@ Plugins are **tool-agnostic** — they describe workflows in terms of categories
 | Design tool | `~~design tool` | Figma | Sketch, Adobe XD, Framer |
 | Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |
 | Project tracker | `~~project tracker` | Linear, Asana, Atlassian (Jira/Confluence) | Shortcut, ClickUp |
+| UX Copy | `~~ux-copy MCP` | UX Copy MCP (langpack + Frontitude) | Phrase, Lokalise, Crowdin |
 | User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice, Dovetail |
 | Product analytics | `~~product analytics` | — | Amplitude, Mixpanel, Heap, FullStory |

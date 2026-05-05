@@ -1,10 +1,14 @@
 ---
 name: ux-writing
-description: Write or review UX copy — microcopy, error messages, empty states, CTAs, onboarding flows. Use when writing interface text, button labels, or any user-facing copy.
+description: Write or review UX copy — microcopy, error messages, empty states, CTAs, onboarding flows. Use when writing interface text, button labels, or any user-facing copy. Integrates with UX Copy MCP for langpack search and AI generation when available.
 argument-hint: "<context, copy to review, or component name>"
 allowed-tools:
   - mcp__claude_ai_Figma__get_design_context
   - mcp__claude_ai_Figma__get_screenshot
+  - mcp__ux-copy__match_copy
+  - mcp__ux-copy__generate_copy
+  - mcp__ux-copy__process_screen
+  - mcp__ux-copy__process_screens
   - Read
   - Bash(grep *)
 paths:
@@ -107,9 +111,89 @@ Adapt tone to context:
 [Anything translators should know — idioms to avoid, character expansion, cultural context]
 ```
 
+## Workflow
+
+Follow this workflow to ensure consistency before creating new copy:
+
+### Step 1: Search existing copy (if UX Copy MCP connected)
+
+Before writing anything new, use `match_copy` to search the langpack and Frontitude database:
+- Check if the same or similar copy already exists
+- Reuse existing i18n keys when possible
+- Note the tone and terminology patterns in existing copy
+
+If the MCP is **not available**, fall back to local file search: grep locale/i18n files for similar terms.
+
+### Step 2: Generate or write copy
+
+**With UX Copy MCP**: Use `generate_copy` with context parameters:
+- `placement`: button, toast, title, subtitle, description, error, empty-state, tooltip, modal, push-notification
+- `intent`: inform, confirm, warn, error, success, onboard, upsell
+- `tone`: formal, friendly, playful, reassuring (match brand voice)
+- `max_length`: character limit if constrained by design
+
+**Without MCP**: Write copy manually following the Writing Principles and Copy Patterns below.
+
+### Step 3: Batch processing (full screens)
+
+For multiple fields on one screen, use `process_screen` to batch-process all UI text at once. For multi-screen flows, use `process_screens` which adds cross-screen consistency checks:
+- Tone divergence detection
+- CTA verb sprawl (too many different verbs for similar actions)
+- Terminology consistency across the flow
+
+If the MCP is **not available**, manually review each field and cross-reference with existing copy patterns in the codebase.
+
 ## Figma Integration
 
 If a Figma URL is provided, use the Figma MCP to view the screen context and understand the full user flow. Check character limits and layout constraints from the design.
+
+When both Figma MCP and UX Copy MCP are available:
+1. Pull the screen design from Figma → identify all text fields
+2. Feed those fields into `process_screen` → get existing matches + generated alternatives
+3. Return results with Frontitude CSV format for direct import
+
+## UX Copy MCP Integration
+
+The UX Copy MCP server (`ux-copy`) provides four tools:
+
+| Tool | When to Use |
+|------|-------------|
+| `match_copy` | Search existing langpack/Frontitude copy before writing new |
+| `generate_copy` | AI-generate copy with placement, intent, and tone context |
+| `process_screen` | Batch all fields on a single screen (search + generate) |
+| `process_screens` | Batch multiple screens with cross-screen consistency checks |
+
+### When MCP is available
+
+- **Always search first**: Call `match_copy` before generating new copy to avoid duplicates
+- **Use batch tools for screens**: `process_screen` is more efficient than individual calls
+- **Leverage consistency checks**: `process_screens` catches tone drift and CTA sprawl automatically
+- **Output includes Frontitude format**: Results are ready for direct import into the copy management system
+
+### When MCP is NOT available (fallback)
+
+The skill works fully without the MCP — use these local alternatives:
+
+| MCP Tool | Local Fallback |
+|----------|---------------|
+| `match_copy` | Grep locale/i18n JSON files for similar terms and keys |
+| `generate_copy` | Write manually following Writing Principles + Copy Patterns |
+| `process_screen` | Read component file → identify text fields → write copy for each |
+| `process_screens` | Manually audit copy across screen files for consistency |
+
+## Brand Voice Integration
+
+This skill provides the universal **workflow** for writing UX copy. For platform-specific **rules** (capitalization, punctuation, component formats), pair with the **brand-voice** skill.
+
+| Skill | Responsibility |
+|-------|---------------|
+| **ux-writing** | HOW to write — principles, workflow, MCP integration, search/generate |
+| **brand-voice** | WHAT rules to follow — capitalization, punctuation, component patterns, vocab |
+
+When both skills are active:
+1. ux-writing handles search → generate → batch workflow
+2. brand-voice validates output against platform guideline rules
+3. Final copy passes both universal quality AND brand compliance
 
 ## Local Code Integration (Claude Code)
 
@@ -119,3 +203,4 @@ When working with local code in Claude Code:
 - Read component files to understand the UI context where copy will appear
 - Check for hardcoded strings that should be extracted to locale files
 - When writing copy, output in the project's i18n format if one exists (JSON, YAML, etc.)
+- If UX Copy MCP is connected, cross-reference local i18n keys with the centralized langpack to detect drift

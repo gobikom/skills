@@ -18,6 +18,7 @@ Explicit workflows you invoke with a slash command:
 | `/design-system` | Audit, document, or extend your design system — components, tokens, patterns |
 | `/handoff` | Generate developer handoff specs — measurements, tokens, states, interactions, and edge cases |
 | `/ux-copy` | Write or review UX copy — microcopy, error messages, empty states, onboarding flows |
+| `/brand-voice` | Review or enforce Banking Digital brand voice rules — capitalization, punctuation, component formats |
 | `/accessibility` | Run an accessibility audit — WCAG compliance, color contrast, screen reader, and keyboard navigation |
 | `/research-synthesis` | Synthesize user research — interviews, surveys, usability tests into actionable insights |
 
@@ -32,6 +33,7 @@ Domain knowledge Claude uses automatically when relevant:
 | `design-critique` | Evaluate designs for usability, visual hierarchy, consistency, and adherence to design principles |
 | `design-system-management` | Manage design tokens, component libraries, and pattern documentation |
 | `ux-writing` | Write effective microcopy — clear, concise, consistent, and brand-aligned |
+| `brand-voice` | Enforce Banking Digital platform brand voice — capitalization, punctuation, component-specific copy formats |
 | `accessibility-review` | Audit designs and code for WCAG 2.1 AA compliance |
 | `user-research` | Plan, conduct, and synthesize user research — interviews, surveys, usability testing |
 | `design-handoff` | Create comprehensive developer handoff documentation from designs |
@@ -95,8 +97,8 @@ Every command and skill works without any integrations:
 | Design critique | Describe or screenshot | Figma MCP (pull designs directly) |
 | Design system | Describe your system | Figma MCP (audit component library) |
 | Handoff specs | Describe or screenshot | Figma MCP (exact measurements, tokens) |
-| UX copy | Describe the context | Knowledge base (brand voice guidelines) |
-| Accessibility | Describe or screenshot | Figma MCP, analytics for real usage data |
+| UX copy | Describe the context | UX Copy MCP (langpack search, AI generation, Frontitude CSV) + Knowledge base (brand voice) |
+| Accessibility | Describe or screenshot | Figma MCP + UX Copy MCP (generate accessible labels) |
 | Research synthesis | Paste transcripts | User feedback tools (pull raw data) |
 
 ## MCP Integrations
@@ -108,6 +110,7 @@ Connect your tools for a richer experience:
 | Category | Examples | What It Enables |
 |---|---|---|
 | **Design tool** | Figma | Pull designs, inspect components, access design tokens |
+| **UX Copy** | UX Copy MCP (langpack + Frontitude) | Search existing copy, AI generation, batch screen processing, Frontitude CSV export, cross-screen consistency checks |
 | **User feedback** | Intercom, Productboard | Raw feedback, feature requests, NPS data |
 | **Project tracker** | Linear, Asana, Jira | Link designs to tickets, track implementation |
 | **Knowledge base** | Notion | Brand guidelines, design principles, research repository |

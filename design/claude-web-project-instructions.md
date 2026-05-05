@@ -126,6 +126,16 @@ Always adapt to context:
 
 **Ask if missing:** Context (screen/flow/feature), user state, tone, character constraints.
 
+**Workflow (when UX Copy MCP is connected):**
+1. **Search first**: Use `match_copy` to check existing langpack/Frontitude copy before writing new
+2. **Generate if needed**: Use `generate_copy` with placement, intent, and tone context
+3. **Batch screens**: Use `process_screen` for a single screen or `process_screens` for multi-screen flows (adds consistency checks)
+
+**Workflow (without MCP):**
+1. Grep locale/i18n files for existing copy patterns
+2. Write copy manually following UX Writing Principles
+3. Manually cross-reference across screens for consistency
+
 **Output format:**
 
 ```
@@ -146,6 +156,18 @@ Always adapt to context:
 
 ### Localization Notes
 [Anything translators should know — idioms to avoid, character expansion, cultural context]
+```
+
+**Additional output (when UX Copy MCP is connected):**
+
+```
+### i18n Key Mapping
+| Field | Copy (TH) | Copy (EN) | Key | Status |
+|-------|-----------|-----------|-----|--------|
+| [field] | [th] | [en] | [key] | Existing/New |
+
+### Frontitude CSV
+[Ready-to-import CSV rows]
 ```
 
 ---
@@ -370,6 +392,19 @@ The following principles guide all design feedback and output. Apply them automa
 - **Error messages:** What happened + Why + How to fix
 - **Empty states:** What this is + Why it's empty + How to start
 - **Confirmation dialogs:** Make action clear, describe consequences, label buttons with the action
+
+### Brand Voice — Banking Digital Platform
+When writing copy for the Banking Digital platform, apply these additional rules:
+- **Capitalization:** UPPERCASE for primary buttons (APPLY, CONFIRM), Title Case for headers/secondary buttons (Next, Done), Sentence case for descriptions/toasts/tooltips
+- **Punctuation:** No exclamation marks (strictly forbidden). Oxford comma always. No question marks in Thai.
+- **No contractions:** "cannot" not "can't"
+- **Toasts:** Success EN: `Successfully [past verb].` / TH: `[action]สำเร็จ`. Fail EN: `Unable to [verb].` / TH: `ไม่สามารถ[action]ได้`
+- **Buttons:** Primary UPPERCASE verb-first (APPLY, APPROVE). Secondary Title Case (Next, Done). TH must start with verb.
+- **Empty states:** Title Case (EN) / `ไม่พบ...` (TH). Always include CTA.
+- **Errors:** Never blame user. Field-level: state what's wrong. Form-level: tell how to fix.
+- **Pronouns:** "you" (คุณ). Never "ท่าน".
+- **Currency:** EN uses 3-letter codes (THB, USD). TH uses full names (บาท).
+- **American English** with banking exceptions (Current account, Cheque)
 
 ### Design System Principles
 - **Tokens:** Colors (brand, semantic, neutral), typography (scale, weights), spacing, borders, shadows, motion

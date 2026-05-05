@@ -6,7 +6,7 @@ AI skill packs for design, engineering, and product workflows — multi-platform
 
 | Pack | Skills | Description |
 |------|--------|-------------|
-| [**design/**](design/) | 6 | UI/UX Design — critique, accessibility, UX writing, design system, research synthesis, handoff |
+| [**design/**](design/) | 7 | UI/UX Design — critique, accessibility, UX writing, brand voice, design system, research synthesis, handoff |
 
 ## Supported Platforms
 
@@ -43,6 +43,23 @@ All packs generate adapters for 5 AI coding tools from a single source:
 # Regenerate adapters after editing prompts
 python3 design/scripts/generate-adapters.py
 ```
+
+## UX Copy MCP Integration (v1.2.0)
+
+The design pack integrates with the **UX Copy MCP Server** for langpack search, AI copy generation, and Frontitude CSV export.
+
+| Tool | Description |
+|------|-------------|
+| `match_copy` | Search existing copy in langpack and Frontitude database |
+| `generate_copy` | AI-generate new copy with placement, intent, and tone context |
+| `process_screen` | Batch-process all fields on a single screen (search + generate) |
+| `process_screens` | Batch-process multiple screens with cross-screen consistency checks |
+
+Key skills that use the MCP:
+- **ux-writing** — universal copy workflow (search → generate → batch)
+- **brand-voice** — Banking Digital platform rules (capitalization, punctuation, component formats)
+
+See [docs/USAGE-GUIDE.md](docs/USAGE-GUIDE.md) for 16 use cases with examples.
 
 ## Architecture
 

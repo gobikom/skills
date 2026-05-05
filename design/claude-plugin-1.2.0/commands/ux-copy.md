@@ -56,6 +56,13 @@ Write or review UX copy for any interface context. See the **ux-writing** skill 
 
 ## If Connectors Available
 
+If **~~ux-copy MCP** is connected:
+- Search existing langpack/Frontitude copy with `match_copy` before writing new
+- Generate alternatives with `generate_copy` using placement, intent, and tone
+- Batch-process full screens with `process_screen` or multi-screen flows with `process_screens`
+- Get cross-screen consistency checks (tone divergence, CTA verb sprawl)
+- Output in Frontitude CSV format ready for import
+
 If **~~knowledge base** is connected:
 - Pull your brand voice guidelines and content style guide
 - Check for existing copy patterns and terminology standards
@@ -63,6 +70,7 @@ If **~~knowledge base** is connected:
 If **~~design tool** is connected:
 - View the screen context in Figma to understand the full user flow
 - Check character limits and layout constraints from the design
+- Combined with ~~ux-copy MCP: pull fields from design → batch search + generate
 
 ## Tips
 

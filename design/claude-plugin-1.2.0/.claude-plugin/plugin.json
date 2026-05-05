@@ -1,0 +1,8 @@
+{
+  "name": "design",
+  "version": "1.2.0",
+  "description": "Accelerate design workflows — critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. Integrates with UX Copy MCP for langpack search and AI copy generation. From exploration to pixel-perfect specs.",
+  "author": {
+    "name": "Anthropic"
+  }
+}
