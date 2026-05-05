@@ -31,6 +31,18 @@ adapters:
       ux-writing:
         - mcp__claude_ai_Figma__get_design_context
         - mcp__claude_ai_Figma__get_screenshot
+        - mcp__ux-copy__match_copy
+        - mcp__ux-copy__generate_copy
+        - mcp__ux-copy__process_screen
+        - mcp__ux-copy__process_screens
+        - Read
+        - "Bash(grep *)"
+      brand-voice:
+        - mcp__ux-copy__match_copy
+        - mcp__ux-copy__generate_copy
+        - mcp__ux-copy__process_screen
+        - mcp__claude_ai_Figma__get_design_context
+        - mcp__claude_ai_Figma__get_screenshot
         - Read
         - "Bash(grep *)"
       design-system:
@@ -97,7 +109,9 @@ skills:
   accessibility-review:
     short-description: "WCAG 2.1 accessibility audit"
   ux-writing:
-    short-description: "UX copy writing and review"
+    short-description: "UX copy writing and review with MCP integration"
+  brand-voice:
+    short-description: "Banking Digital brand voice enforcement"
   design-system:
     short-description: "Design system management"
   research-synthesis:
