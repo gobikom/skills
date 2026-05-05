@@ -111,6 +111,61 @@ Adapt tone to context:
 [Anything translators should know — idioms to avoid, character expansion, cultural context]
 ```
 
+## Frontitude CSV Export
+
+After bulk processing (`process_screen` / `process_screens`), generate a downloadable CSV file in Frontitude import format.
+
+### CSV Columns
+
+```
+Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags,Copy guidelines,Updated at,Last Edited By,Frontitude link
+```
+
+### Column Mapping
+
+| Column | Source | Example |
+|--------|--------|---------|
+| Name | `{platform_name} / {category} / {copy_name} / {id}` | `Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile` |
+| Unique key | Same as Name | (same) |
+| Context | `screen_context` from process_screen input | `Transfer confirmation before executing` |
+| Value | EN copy (default) | `Confirm Transfer` |
+| Value (English - en) | EN copy | `Confirm Transfer` |
+| Value (Thai - th) | TH copy | `ยืนยันการโอน` |
+| Status | `Draft` for new, `Review` for partial match | `Draft` |
+| Tags | `product + device + "AI Generated"` | `Transfer, Mobile, AI Generated` |
+| Copy guidelines | Guideline rule applied | `Title Case for headers` |
+| Updated at | Current date (ISO format) | `2026-05-05` |
+| Last Edited By | Empty (filled by Frontitude) | |
+| Frontitude link | Empty (filled by Frontitude) | |
+
+### Category Mapping (for Name column)
+
+| Placement | Category Code |
+|-----------|--------------|
+| Title | `03 Title` |
+| Button / CTA | `05 Button` |
+| Toast / Snackbar | `08 Informing` |
+| Popup / Dialog | `07 Popup` |
+| Empty State | `09 Empty State` |
+| Inline Error | `06 Error` |
+| Tooltip | `10 Tooltip` |
+| Label | `04 Label` |
+| Placeholder | `04 Placeholder` |
+| Push Notification | `11 Notification` |
+
+### Output Instructions
+
+After generating copy results, always create a CSV file:
+
+1. Compile all fields (existing matches + new generated) into Frontitude CSV format
+2. Write the file to the working directory: `frontitude-export-{screen_name}-{date}.csv`
+3. Present the file path to the user for download
+
+Example:
+```
+Wrote 8 rows to frontitude-export-transfer-confirm-20260505.csv
+```
+
 ## Workflow
 
 Follow this workflow to ensure consistency before creating new copy:

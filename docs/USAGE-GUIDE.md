@@ -1011,12 +1011,33 @@ brand-voice corrects: "Successfully transferred."
 | [field] | [th] | [en] | [key] | Existing/New |
 ```
 
-### Frontitude CSV (with MCP)
+### Frontitude CSV File (auto-generated after bulk process)
+
+After `process_screen` or `process_screens`, a CSV file is created in the Frontitude import format:
 
 ```csv
-key,th,en,screen,placement,status,tags
-transfer.confirm.title,ยืนยันการโอน,Confirm Transfer,transfer_confirm,title,existing,"Transfer"
+Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags,Copy guidelines,Updated at,Last Edited By,Frontitude link
+Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Transfer confirmation screen,Confirm Transfer,Confirm Transfer,ยืนยันการโอน,Review,"Transfer, Mobile, AI Generated",Title Case for headers,2026-05-05,,
+Krungthai Business / 05 Button / Confirm Transfer / 002 Button_mobile,Krungthai Business / 05 Button / Confirm Transfer / 002 Button_mobile,Primary CTA on confirmation,CONFIRM,CONFIRM,ยืนยัน,Draft,"Transfer, Mobile, AI Generated",UPPERCASE for primary buttons,2026-05-05,,
+Krungthai Business / 08 Informing / Transfer Success / 003 Toast_mobile,Krungthai Business / 08 Informing / Transfer Success / 003 Toast_mobile,Success toast after transfer,Successfully transferred.,Successfully transferred.,โอนเงินสำเร็จ,Draft,"Transfer, Mobile, AI Generated","Success: EN 'Successfully [past verb].' / TH '[action]สำเร็จ'",2026-05-05,,
 ```
+
+**File output**: `frontitude-export-{screen}-{date}.csv` — ready for direct import into Frontitude.
+
+**Column mapping**:
+
+| Column | Source |
+|--------|--------|
+| Name | `{platform} / {category} / {copy_name} / {id}` |
+| Unique key | Same as Name |
+| Context | Screen/flow context from input |
+| Value | EN copy (default value) |
+| Value (English - en) | EN copy |
+| Value (Thai - th) | TH copy |
+| Status | `Draft` (new) or `Review` (partial match) |
+| Tags | Product, device, "AI Generated" |
+| Copy guidelines | Guideline rule applied |
+| Updated at | Current date |
 
 ---
 
