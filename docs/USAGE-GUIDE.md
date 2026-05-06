@@ -441,13 +441,14 @@ Extract all copy from a Figma design and produce a complete spec.
 | Loading | กำลังดำเนินการ... | Processing... | `transfer.loading` |
 
 ### Frontitude CSV
-(ready for import)
+File: `frontitude-export-transfer-confirm-20260505.csv` (ready for import)
+
 ```csv
-key,th,en,screen,placement,status
-transfer.confirm.title,ยืนยันการโอน,Transfer Confirmation,transfer_confirm,title,existing
-transfer.confirm.btn.primary,ยืนยันการโอน,Confirm Transfer,transfer_confirm,button,new
-transfer.toast.success,โอนเงินสำเร็จ,Transfer successful,transfer_confirm,toast,new
-transfer.error.insufficient,ยอดเงินไม่เพียงพอ,Insufficient balance,transfer_confirm,error,new
+Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags,Copy guidelines,Updated at,Last Edited By,Frontitude link
+Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Transfer confirmation screen,Transfer Confirmation,Transfer Confirmation,ยืนยันการโอน,Review,"Transfer, Mobile",Title Case for headers,2026-05-05,,
+Krungthai Business / 05 Button / Confirm Transfer / 005 Button_mobile,Krungthai Business / 05 Button / Confirm Transfer / 005 Button_mobile,Primary CTA,CONFIRM TRANSFER,CONFIRM TRANSFER,ยืนยันการโอน,Draft,"Transfer, Mobile, AI Generated",UPPERCASE for primary buttons,2026-05-05,,
+Krungthai Business / 08 Informing / Transfer Success / 006 Toast_mobile,Krungthai Business / 08 Informing / Transfer Success / 006 Toast_mobile,Success toast,Successfully transferred.,Successfully transferred.,โอนเงินสำเร็จ,Draft,"Transfer, Mobile, AI Generated","Success: EN 'Successfully [past verb].'",2026-05-05,,
+Krungthai Business / 06 Error / Insufficient Balance / 007 Error_mobile,Krungthai Business / 06 Error / Insufficient Balance / 007 Error_mobile,Error state,Insufficient balance,Insufficient balance,ยอดเงินไม่เพียงพอ,Draft,"Transfer, Mobile, AI Generated",Sentence case for errors,2026-05-05,,
 ```
 
 ### Design Notes
