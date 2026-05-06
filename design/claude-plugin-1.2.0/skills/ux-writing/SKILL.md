@@ -54,22 +54,24 @@ Adapt tone to context:
 
 After bulk processing, generate a CSV file in Frontitude 12-column import format:
 
-| Column | Source |
-|--------|--------|
-| Name | `{platform} / {category} / {copy_name} / {id}` |
-| Unique key | Same as Name |
-| Context | Screen/flow context |
-| Value | EN copy (default) |
-| Value (English - en) | EN copy |
-| Value (Thai - th) | TH copy |
-| Status | `Draft` (new) or `Review` (partial match) |
-| Tags | Product, device, "AI Generated" |
-| Copy guidelines | Guideline rule applied |
-| Updated at | Current date |
-| Last Edited By | (empty) |
-| Frontitude link | (empty) |
+| Column | Rule | Example |
+|--------|------|---------|
+| Name | `{platform} / {category} / {actual EN copy}: / {seq} {Type}_{device}` | `Krungthai Business / 03 Title / Rate Confirmation Summary: / 999 Title_web` |
+| Unique key | Same as Name | (same) |
+| Context | Leave **empty** | |
+| Value | Raw display value (may differ from EN copy) | `Rate Confirmation Summary 999` |
+| Value (English - en) | EN copy as shown in UI | `Rate Confirmation Summary:` |
+| Value (Thai - th) | TH copy as shown in UI | `สรุปการยืนยันอัตราแลกเปลี่ยน:` |
+| Status | `Draft` | `Draft` |
+| Tags | Ask user for sprint/milestone tags | `OR Multiple Approve, KB_MVP5_D2` |
+| Copy guidelines | Short note (1-3 words) | `New copy` |
+| Updated at | Leave **empty** | |
+| Last Edited By | Leave **empty** | |
+| Frontitude link | Leave **empty** | |
 
-Category mapping for the Name column:
+Rules: Name uses actual EN copy (not generic labels). Tags from user (not "AI Generated"). Copy guidelines max 1-3 words. Ask user for: platform, device, tags, sequence number.
+
+Category mapping:
 
 | Placement | Category |
 |-----------|---------|

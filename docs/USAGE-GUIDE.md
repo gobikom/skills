@@ -445,10 +445,10 @@ File: `frontitude-export-transfer-confirm-20260505.csv` (ready for import)
 
 ```csv
 Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags,Copy guidelines,Updated at,Last Edited By,Frontitude link
-Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Transfer confirmation screen,Transfer Confirmation,Transfer Confirmation,ยืนยันการโอน,Review,"Transfer, Mobile",Title Case for headers,2026-05-05,,
-Krungthai Business / 05 Button / Confirm Transfer / 005 Button_mobile,Krungthai Business / 05 Button / Confirm Transfer / 005 Button_mobile,Primary CTA,CONFIRM TRANSFER,CONFIRM TRANSFER,ยืนยันการโอน,Draft,"Transfer, Mobile, AI Generated",UPPERCASE for primary buttons,2026-05-05,,
-Krungthai Business / 08 Informing / Transfer Success / 006 Toast_mobile,Krungthai Business / 08 Informing / Transfer Success / 006 Toast_mobile,Success toast,Successfully transferred.,Successfully transferred.,โอนเงินสำเร็จ,Draft,"Transfer, Mobile, AI Generated","Success: EN 'Successfully [past verb].'",2026-05-05,,
-Krungthai Business / 06 Error / Insufficient Balance / 007 Error_mobile,Krungthai Business / 06 Error / Insufficient Balance / 007 Error_mobile,Error state,Insufficient balance,Insufficient balance,ยอดเงินไม่เพียงพอ,Draft,"Transfer, Mobile, AI Generated",Sentence case for errors,2026-05-05,,
+Krungthai Business / 03 Title / Transfer Confirmation: / 999 Title_mobile,Krungthai Business / 03 Title / Transfer Confirmation: / 999 Title_mobile,,Transfer Confirmation,Transfer Confirmation:,ยืนยันการโอน:,Draft,"FTT, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
+Krungthai Business / 05 Button / CONFIRM: / 998 Button_mobile,Krungthai Business / 05 Button / CONFIRM: / 998 Button_mobile,,CONFIRM,CONFIRM,ยืนยัน,Draft,"FTT, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
+Krungthai Business / 08 Informing / Successfully transferred.: / 997 Toast_mobile,Krungthai Business / 08 Informing / Successfully transferred.: / 997 Toast_mobile,,Successfully transferred.,Successfully transferred.,โอนเงินสำเร็จ,Draft,"FTT, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
+Krungthai Business / 06 Error / Insufficient balance.: / 996 Error_mobile,Krungthai Business / 06 Error / Insufficient balance.: / 996 Error_mobile,,Insufficient balance.,Insufficient balance.,ยอดเงินไม่เพียงพอ,Draft,"FTT, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
 ```
 
 ### Design Notes
@@ -1014,31 +1014,27 @@ brand-voice corrects: "Successfully transferred."
 
 ### Frontitude CSV File (auto-generated after bulk process)
 
-After `process_screen` or `process_screens`, a CSV file is created in the Frontitude import format:
+After `process_screen` or `process_screens`, a CSV is produced in the Frontitude import format. The AI will ask for platform name, device, tags, and sequence number before generating.
 
 ```csv
 Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags,Copy guidelines,Updated at,Last Edited By,Frontitude link
-Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile,Transfer confirmation screen,Confirm Transfer,Confirm Transfer,ยืนยันการโอน,Review,"Transfer, Mobile, AI Generated",Title Case for headers,2026-05-05,,
-Krungthai Business / 05 Button / Confirm Transfer / 002 Button_mobile,Krungthai Business / 05 Button / Confirm Transfer / 002 Button_mobile,Primary CTA on confirmation,CONFIRM,CONFIRM,ยืนยัน,Draft,"Transfer, Mobile, AI Generated",UPPERCASE for primary buttons,2026-05-05,,
-Krungthai Business / 08 Informing / Transfer Success / 003 Toast_mobile,Krungthai Business / 08 Informing / Transfer Success / 003 Toast_mobile,Success toast after transfer,Successfully transferred.,Successfully transferred.,โอนเงินสำเร็จ,Draft,"Transfer, Mobile, AI Generated","Success: EN 'Successfully [past verb].' / TH '[action]สำเร็จ'",2026-05-05,,
+Krungthai Business / 03 Title / Rate Confirmation Summary: / 999 Title_web,Krungthai Business / 03 Title / Rate Confirmation Summary: / 999 Title_web,,Rate Confirmation Summary 999,Rate Confirmation Summary:,สรุปการยืนยันอัตราแลกเปลี่ยน:,Draft,"OR Multiple Approve, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
+Krungthai Business / 05 Button / CONFIRM: / 998 Button_web,Krungthai Business / 05 Button / CONFIRM: / 998 Button_web,,CONFIRM,CONFIRM,ยืนยัน,Draft,"OR Multiple Approve, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
+Krungthai Business / 08 Informing / Successfully transferred.: / 997 Toast_web,Krungthai Business / 08 Informing / Successfully transferred.: / 997 Toast_web,,Successfully transferred.,Successfully transferred.,โอนเงินสำเร็จ,Draft,"OR Multiple Approve, KB_MVP5_D2, Krungthai Business_Mobile",New copy,,,
 ```
 
-**File output**: `frontitude-export-{screen}-{date}.csv` — ready for direct import into Frontitude.
+**Output**: Claude Code writes `frontitude-export-{screen}-{date}.csv`. Claude Desktop/Web outputs as code block.
 
-**Column mapping**:
+**Column rules**:
 
-| Column | Source |
-|--------|--------|
-| Name | `{platform} / {category} / {copy_name} / {id}` |
-| Unique key | Same as Name |
-| Context | Screen/flow context from input |
-| Value | EN copy (default value) |
-| Value (English - en) | EN copy |
-| Value (Thai - th) | TH copy |
-| Status | `Draft` (new) or `Review` (partial match) |
-| Tags | Product, device, "AI Generated" |
-| Copy guidelines | Guideline rule applied |
-| Updated at | Current date |
+| Column | Rule |
+|--------|------|
+| Name / Unique key | Use actual EN copy as name, not generic labels |
+| Context | Leave **empty** |
+| Value | Raw display value (may differ from EN copy) |
+| Tags | From user (sprint/milestone tags) — never "AI Generated" |
+| Copy guidelines | Short note only, 1-3 words (e.g. `New copy`, `Bug fixed`) |
+| Updated at, Last Edited By, Frontitude link | Leave **empty** |
 
 ---
 

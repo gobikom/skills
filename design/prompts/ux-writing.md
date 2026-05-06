@@ -112,17 +112,29 @@ Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags
 
 Column mapping:
 
-| Column | Source |
-|--------|--------|
-| Name | `{platform_name} / {category} / {copy_name} / {id}` |
-| Unique key | Same as Name |
-| Context | Screen/flow context |
-| Value | EN copy (default) |
-| Value (English - en) | EN copy |
-| Value (Thai - th) | TH copy |
-| Status | `Draft` (new) or `Review` (partial match) |
-| Tags | Product, device, "AI Generated" |
-| Copy guidelines | Guideline rule applied |
+| Column | Rule | Example |
+|--------|------|---------|
+| Name | `{platform} / {category} / {actual EN copy or short name}: / {seq} {Type}_{device}` | `Krungthai Business / 03 Title / Rate Confirmation Summary: / 999 Title_web` |
+| Unique key | Same as Name | (same) |
+| Context | Leave **empty** unless user provides context | *(empty)* |
+| Value | Raw display value — may differ from EN copy | `Rate Confirmation Summary 999` |
+| Value (English - en) | EN copy as shown in UI | `Rate Confirmation Summary:` |
+| Value (Thai - th) | TH copy as shown in UI | `สรุปการยืนยันอัตราแลกเปลี่ยน:` |
+| Status | `Draft` | `Draft` |
+| Tags | Ask user for sprint/milestone tags. Do NOT invent tags. | `OR Multiple Approve, KB_MVP5_D2, Krungthai Business_Mobile` |
+| Copy guidelines | Short note only (1-3 words), not rule explanation | `New copy` |
+| Updated at | Leave **empty** | *(empty)* |
+| Last Edited By | Leave **empty** | *(empty)* |
+| Frontitude link | Leave **empty** | *(empty)* |
+
+Important rules:
+1. **Name**: Use actual EN copy text as copy name, not generic labels like "Page Title"
+2. **Context, Updated at, Last Edited By, Frontitude link**: Always leave empty
+3. **Tags**: Always ask user for tags. Never use "AI Generated" as a tag.
+4. **Copy guidelines**: Max 1-3 words. Never write rule explanations.
+5. **Sequence number**: Ask user or use `999` as placeholder.
+
+Before generating CSV, ask user for: platform name, device (web/mobile), tags, starting sequence number, copy guidelines note.
 
 Category mapping for the Name column:
 

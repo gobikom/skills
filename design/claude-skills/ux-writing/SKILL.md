@@ -123,20 +123,30 @@ Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags
 
 ### Column Mapping
 
-| Column | Source | Example |
-|--------|--------|---------|
-| Name | `{platform_name} / {category} / {copy_name} / {id}` | `Krungthai Business / 03 Title / Transfer Confirmation / 001 Title_mobile` |
+| Column | Rule | Example (reference) |
+|--------|------|-------------------|
+| Name | `{platform} / {category} / {actual EN copy text or short name}: / {sequence} {Type}_{device}` | `Krungthai Business / 03 Title / Rate Confirmation Summary: / 999 Title_web` |
 | Unique key | Same as Name | (same) |
-| Context | `screen_context` from process_screen input | `Transfer confirmation before executing` |
-| Value | EN copy (default) | `Confirm Transfer` |
-| Value (English - en) | EN copy | `Confirm Transfer` |
-| Value (Thai - th) | TH copy | `ยืนยันการโอน` |
-| Status | `Draft` for new, `Review` for partial match | `Draft` |
-| Tags | `product + device + "AI Generated"` | `Transfer, Mobile, AI Generated` |
-| Copy guidelines | Guideline rule applied | `Title Case for headers` |
-| Updated at | Current date (ISO format) | `2026-05-05` |
-| Last Edited By | Empty (filled by Frontitude) | |
-| Frontitude link | Empty (filled by Frontitude) | |
+| Context | Leave **empty** unless user provides specific context | *(empty)* |
+| Value | The raw display value — may differ from EN copy (e.g. include sequence numbers or formatting) | `Rate Confirmation Summary 999` |
+| Value (English - en) | EN copy as it appears in the UI | `Rate Confirmation Summary:` |
+| Value (Thai - th) | TH copy as it appears in the UI | `สรุปการยืนยันอัตราแลกเปลี่ยน:` |
+| Status | `Draft` | `Draft` |
+| Tags | Ask user for sprint/milestone tags. Format: `{feature tag}, {sprint tag}, {platform}_{device}` | `OR Multiple Approve, KB_MVP5_D2, Krungthai Business_Mobile` |
+| Copy guidelines | Short note only (1-3 words). Not a rule explanation. | `Test bug fixed` |
+| Updated at | Leave **empty** (Frontitude fills this) | *(empty)* |
+| Last Edited By | Leave **empty** (Frontitude fills this) | *(empty)* |
+| Frontitude link | Leave **empty** (Frontitude fills this) | *(empty)* |
+
+### Important Column Rules
+
+1. **Name / Unique key**: Use the actual EN copy text (or short descriptive name) as the copy name — NOT generic labels like "Page Title" or "Upload CTA Button"
+2. **Value vs EN copy**: Value is the raw default value which may include sequence numbers or differ from the display copy
+3. **Context**: Leave empty by default. Only fill if user explicitly provides context.
+4. **Tags**: Always ask the user for sprint/milestone tags (e.g. `KB_MVP5_D2`). Do NOT invent tags like "AI Generated".
+5. **Copy guidelines**: Keep extremely short (1-3 words). Examples: `Bug fixed`, `New copy`, `Revised`. Do NOT write rule explanations.
+6. **Updated at**: Leave empty. Frontitude manages timestamps.
+7. **Sequence number**: Ask user for the starting sequence number, or use `999` as placeholder.
 
 ### Category Mapping (for Name column)
 
@@ -152,6 +162,15 @@ Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags
 | Label | `04 Label` |
 | Placeholder | `04 Placeholder` |
 | Push Notification | `11 Notification` |
+
+### Before Generating CSV — Ask User
+
+Before producing CSV output, ask for these if not provided:
+1. **Platform name**: e.g. `Krungthai Business`, `Bank NEXT`
+2. **Device**: `web` or `mobile` (used in ID suffix like `Title_web`)
+3. **Tags**: Sprint/milestone tags (e.g. `KB_MVP5_D2, Krungthai Business_Mobile`)
+4. **Starting sequence number**: or use `999` as placeholder
+5. **Copy guidelines note**: short note for this batch (e.g. `New feature`, `Bug fixed`)
 
 ### Output Instructions
 
