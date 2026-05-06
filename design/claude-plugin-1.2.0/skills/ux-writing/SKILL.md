@@ -1,6 +1,6 @@
 ---
 name: ux-writing
-description: Write effective microcopy for user interfaces. Trigger with "write copy for", "help with UX copy", "what should this button say", "error message for", "empty state copy", or when the user needs help with any interface text.
+description: Write effective microcopy for user interfaces. Integrates with UX Copy MCP for langpack search, AI generation, and Frontitude CSV export when available.
 ---
 
 # UX Writing
@@ -42,3 +42,54 @@ Adapt tone to context:
 - **Error**: Empathetic and helpful
 - **Warning**: Clear and actionable
 - **Neutral**: Informative and concise
+
+## Workflow
+
+1. **Search first**: Use `match_copy` (MCP) or grep locale files to find existing copy
+2. **Generate or write**: Use `generate_copy` (MCP) or write manually following principles
+3. **Batch screens**: Use `process_screen` / `process_screens` (MCP) or review each field manually
+4. **Export CSV**: Generate Frontitude CSV file with all results
+
+## Frontitude CSV Export
+
+After bulk processing, generate a CSV file in Frontitude 12-column import format:
+
+| Column | Source |
+|--------|--------|
+| Name | `{platform} / {category} / {copy_name} / {id}` |
+| Unique key | Same as Name |
+| Context | Screen/flow context |
+| Value | EN copy (default) |
+| Value (English - en) | EN copy |
+| Value (Thai - th) | TH copy |
+| Status | `Draft` (new) or `Review` (partial match) |
+| Tags | Product, device, "AI Generated" |
+| Copy guidelines | Guideline rule applied |
+| Updated at | Current date |
+| Last Edited By | (empty) |
+| Frontitude link | (empty) |
+
+Category mapping for the Name column:
+
+| Placement | Category |
+|-----------|---------|
+| Title | 03 Title |
+| Label | 04 Label |
+| Button / CTA | 05 Button |
+| Inline Error | 06 Error |
+| Popup / Dialog | 07 Popup |
+| Toast / Snackbar | 08 Informing |
+| Empty State | 09 Empty State |
+| Tooltip | 10 Tooltip |
+| Push Notification | 11 Notification |
+
+Write the file as `frontitude-export-{screen_name}-{date}.csv`.
+
+## Brand Voice Integration
+
+Pair with **brand-voice** skill for platform-specific rules (capitalization, punctuation, component formats).
+
+| Skill | Role |
+|-------|------|
+| ux-writing | HOW to write (principles, workflow, MCP) |
+| brand-voice | WHAT rules to follow (Banking Digital guideline) |

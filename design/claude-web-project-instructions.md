@@ -165,10 +165,14 @@ Always adapt to context:
 | Field | Copy (TH) | Copy (EN) | Key | Status |
 |-------|-----------|-----------|-----|--------|
 | [field] | [th] | [en] | [key] | Existing/New |
-
-### Frontitude CSV
-[Ready-to-import CSV rows]
 ```
+
+**Frontitude CSV Export (after bulk process):**
+
+Generate a CSV file (`frontitude-export-{screen}-{date}.csv`) in 12-column Frontitude import format:
+Name, Unique key, Context, Value, Value (English - en), Value (Thai - th), Status, Tags, Copy guidelines, Updated at, Last Edited By, Frontitude link.
+
+Category codes for the Name column: Title (03), Label (04), Button (05), Error (06), Popup (07), Toast (08), Empty State (09), Tooltip (10), Notification (11).
 
 ---
 

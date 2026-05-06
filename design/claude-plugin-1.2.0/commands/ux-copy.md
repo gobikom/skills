@@ -61,7 +61,8 @@ If **~~ux-copy MCP** is connected:
 - Generate alternatives with `generate_copy` using placement, intent, and tone
 - Batch-process full screens with `process_screen` or multi-screen flows with `process_screens`
 - Get cross-screen consistency checks (tone divergence, CTA verb sprawl)
-- Output in Frontitude CSV format ready for import
+- Auto-generate Frontitude CSV file (`frontitude-export-{screen}-{date}.csv`) with 12 columns:
+  Name, Unique key, Context, Value, EN, TH, Status, Tags, Copy guidelines, Updated at, Last Edited By, Frontitude link
 
 If **~~knowledge base** is connected:
 - Pull your brand voice guidelines and content style guide
