@@ -157,61 +157,55 @@ Sentence case. No periods. Include format example when relevant.
 
 ## Output Format — Review
 
-```markdown
-## Brand Voice Review: [Context]
-
-### Copy Reviewed
-[Original copy]
-
-### Violations Found
-| # | Rule | Violation | Fix |
-|---|------|-----------|-----|
-| 1 | [Rule name] | [What's wrong] | [Corrected copy] |
-
-### Corrected Copy
-**[Element]**: [Corrected copy]
-
-### Compliance Score
-[X/10] — [Summary of issues]
-```
+    ## Brand Voice Review: [Context]
+    
+    ### Copy Reviewed
+    [Original copy]
+    
+    ### Violations Found
+    | # | Rule | Violation | Fix |
+    |---|------|-----------|-----|
+    | 1 | [Rule name] | [What's wrong] | [Corrected copy] |
+    
+    ### Corrected Copy
+    **[Element]**: [Corrected copy]
+    
+    ### Compliance Score
+    [X/10] — [Summary of issues]
 
 ## Output Format — Write
 
-```markdown
-## Brand Voice Copy: [Component] — [Context]
-
-### Copy
-**EN**: [Copy following all rules]
-**TH**: [Copy following all rules]
-
-### Rules Applied
-- [Which capitalization, punctuation, component format rules were applied]
-
-### Alternatives
-| Option | EN | TH | Notes |
-|--------|----|----|-------|
-| A | [Copy] | [Copy] | [Guideline rule applied] |
-| B | [Copy] | [Copy] | [Guideline rule applied] |
-```
+    ## Brand Voice Copy: [Component] — [Context]
+    
+    ### Copy
+    **EN**: [Copy following all rules]
+    **TH**: [Copy following all rules]
+    
+    ### Rules Applied
+    - [Which capitalization, punctuation, component format rules were applied]
+    
+    ### Alternatives
+    | Option | EN | TH | Notes |
+    |--------|----|----|-------|
+    | A | [Copy] | [Copy] | [Guideline rule applied] |
+    | B | [Copy] | [Copy] | [Guideline rule applied] |
 
 ## Output Format — Audit
 
-```markdown
-## Brand Voice Audit: [Scope]
-
-### Summary
-**Files scanned**: [X] | **Violations**: [X] | **Score**: [X/100]
-
-### Violations by Rule
-| Rule | Count | Severity | Examples |
-|------|-------|----------|---------|
-| [Capitalization] | [X] | High/Med/Low | [key: "..." should be "..."] |
-
-### Top Fixes
-1. [Most common violation + batch fix]
-2. [Second most common]
-3. [Third]
-```
+    ## Brand Voice Audit: [Scope]
+    
+    ### Summary
+    **Files scanned**: [X] | **Violations**: [X] | **Score**: [X/100]
+    
+    ### Violations by Rule
+    | Rule | Count | Severity | Examples |
+    |------|-------|----------|---------|
+    | [Capitalization] | [X] | High/Med/Low | [key: "..." should be "..."] |
+    
+    ### Top Fixes
+    1. [Most common violation + batch fix]
+    2. [Second most common]
+    3. [Third]
 
 ## Relationship with ux-writing Skill
 
