@@ -155,48 +155,68 @@ Name,Unique key,Context,Value,Value (English - en),Value (Thai - th),Status,Tags
 
 ### Output Instructions
 
-After generating copy results, always create a CSV file:
+After generating copy results, always produce the Frontitude CSV output:
 
-1. Compile all fields (existing matches + new generated) into Frontitude CSV format
+**Claude Code (CLI / Desktop IDE):**
+1. Compile all fields into Frontitude CSV format
 2. Write the file to the working directory: `frontitude-export-{screen_name}-{date}.csv`
-3. Present the file path to the user for download
+3. Present the file path to the user
 
-Example:
-```
-Wrote 8 rows to frontitude-export-transfer-confirm-20260505.csv
-```
+**Claude Desktop / Claude Web (no filesystem access):**
+1. Compile all fields into Frontitude CSV format
+2. Output the complete CSV as a code block so the user can copy it
+3. Tell the user to save as `.csv` file for Frontitude import
+
+Always produce the CSV regardless of platform — the delivery method changes, the content does not.
 
 ## Workflow
 
-Follow this workflow to ensure consistency before creating new copy:
+Follow this workflow to ensure consistency before creating new copy.
 
-### Step 1: Search existing copy (if UX Copy MCP connected)
+**Important:** At the start of every session, check if UX Copy MCP tools are available by attempting to use `match_copy`. If it responds, use the MCP workflow. If not available, use the fallback workflow. Always state which mode you are using.
 
-Before writing anything new, use `match_copy` to search the langpack and Frontitude database:
-- Check if the same or similar copy already exists
+### Step 1: Search existing copy
+
+**With UX Copy MCP (try this first):**
+- Call `match_copy` with the text you need to write
+- Check if the same or similar copy already exists in langpack/Frontitude
 - Reuse existing i18n keys when possible
 - Note the tone and terminology patterns in existing copy
 
-If the MCP is **not available**, fall back to local file search: grep locale/i18n files for similar terms.
+**Without MCP (fallback):**
+- Grep locale/i18n files for similar terms and keys
+- Check existing JSON files for patterns
 
 ### Step 2: Generate or write copy
 
-**With UX Copy MCP**: Use `generate_copy` with context parameters:
-- `placement`: button, toast, title, subtitle, description, error, empty-state, tooltip, modal, push-notification
-- `intent`: inform, confirm, warn, error, success, onboard, upsell
-- `tone`: formal, friendly, playful, reassuring (match brand voice)
-- `max_length`: character limit if constrained by design
+**With UX Copy MCP:**
+- Call `generate_copy` with context parameters:
+  - `placement`: button, toast, title, subtitle, description, error, empty-state, tooltip, modal, push-notification
+  - `intent`: inform, confirm, warn, error, success, onboard, upsell
+  - `tone`: formal, friendly, playful, reassuring (match brand voice)
+  - `max_length`: character limit if constrained by design
+- The MCP returns 3 options with TH/EN text and tone labels
 
-**Without MCP**: Write copy manually following the Writing Principles and Copy Patterns below.
+**Without MCP (fallback):**
+- Write copy manually following the Writing Principles and Copy Patterns above
+- Provide 3 alternatives with tone labels
 
 ### Step 3: Batch processing (full screens)
 
-For multiple fields on one screen, use `process_screen` to batch-process all UI text at once. For multi-screen flows, use `process_screens` which adds cross-screen consistency checks:
-- Tone divergence detection
-- CTA verb sprawl (too many different verbs for similar actions)
-- Terminology consistency across the flow
+**With UX Copy MCP:**
+- Single screen: call `process_screen` with all fields at once
+- Multi-screen flow: call `process_screens` which adds consistency checks:
+  - Tone divergence detection
+  - CTA verb sprawl (too many different verbs for similar actions)
+  - Terminology consistency across the flow
 
-If the MCP is **not available**, manually review each field and cross-reference with existing copy patterns in the codebase.
+**Without MCP (fallback):**
+- Review each field manually and cross-reference with existing copy patterns
+- Manually check consistency across screens
+
+### Step 4: Export Frontitude CSV
+
+Always produce CSV output after bulk processing (see Frontitude CSV Export section above).
 
 ## Figma Integration
 

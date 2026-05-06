@@ -83,7 +83,16 @@ Category mapping for the Name column:
 | Tooltip | 10 Tooltip |
 | Push Notification | 11 Notification |
 
-Write the file as `frontitude-export-{screen_name}-{date}.csv`.
+**Claude Code:** Write to `frontitude-export-{screen_name}-{date}.csv`
+**Claude Desktop / Web:** Output CSV as code block for user to copy and save as `.csv`
+
+## Workflow
+
+1. **Check MCP**: Try `match_copy` first — if it responds, use MCP workflow. If not, use fallback. State which mode.
+2. **Search**: `match_copy` (MCP) or grep locale files (fallback)
+3. **Generate**: `generate_copy` (MCP) or write manually with 3 alternatives (fallback)
+4. **Batch**: `process_screen` / `process_screens` (MCP) or review each field manually (fallback)
+5. **Export CSV**: Always produce Frontitude CSV output regardless of platform
 
 ## Brand Voice Integration
 
